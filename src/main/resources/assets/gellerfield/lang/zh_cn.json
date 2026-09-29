@@ -1,8 +1,11 @@
 {
   "item.gellerfield.geller_field": "盖勒力场",
+  "item.gellerfield.battery": "力场电池",
   "effect.gellerfield.geller_field": "盖勒力场",
   "effect.gellerfield.nether_corruption": "下界腐败",
   "advancement.gellerfield.veil_of_reality.title": "现实的帷幕",
   "advancement.gellerfield.veil_of_reality.description": "您的力场是忠诚的……",
-  "tooltip.gellerfield.geller_field": "为佩戴者免疫下界腐败。"
+  "tooltip.gellerfield.geller_field": "为佩戴者免疫下界腐败。",
+  "tooltip.gellerfield.battery_charge": "电池电量：%s%%",
+  "tooltip.gellerfield.no_battery": "未装入电池（手持右键管理）"
 }

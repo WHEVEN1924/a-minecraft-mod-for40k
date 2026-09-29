@@ -1,8 +1,11 @@
 {
   "item.gellerfield.geller_field": "Geller Field",
+  "item.gellerfield.battery": "Field Battery",
   "effect.gellerfield.geller_field": "Geller Field",
   "effect.gellerfield.nether_corruption": "Nether Corruption",
   "advancement.gellerfield.veil_of_reality.title": "Veil of Reality",
   "advancement.gellerfield.veil_of_reality.description": "Your field is faithful...",
-  "tooltip.gellerfield.geller_field": "Projects a bubble of reality around the wearer, granting immunity to Nether Corruption."
+  "tooltip.gellerfield.geller_field": "Grants immunity to Nether Corruption.",
+  "tooltip.gellerfield.battery_charge": "Battery charge: %s%%",
+  "tooltip.gellerfield.no_battery": "No battery installed (hold and right-click to manage)"
 }

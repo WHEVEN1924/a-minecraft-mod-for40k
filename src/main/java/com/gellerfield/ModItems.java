@@ -9,4 +9,7 @@ public class ModItems {
 
     public static final DeferredItem<GellerFieldItem> GELLER_FIELD =
             ITEMS.register("geller_field", () -> new GellerFieldItem(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<BatteryItem> BATTERY =
+            ITEMS.register("battery", () -> new BatteryItem(new Item.Properties().stacksTo(16)));
 }
