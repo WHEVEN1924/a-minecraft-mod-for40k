@@ -64,13 +64,13 @@ public class GameEvents {
 
             // 1) 有电 -> 刷新盖勒力场效果
             if (hasPower) {
-                player.addEffect(new MobEffectInstance(ModEffects.GELLER_FIELD.get(), EFFECT_DURATION, 0, true, false, true));
+                player.addEffect(new MobEffectInstance(ModEffects.GELLER_FIELD, EFFECT_DURATION, 0, true, false, true));
             }
         }
 
         // 3) 下界且无力场 -> 下界腐败
         if (player.level().dimension() == Level.NETHER && !player.hasEffect(ModEffects.GELLER_FIELD)) {
-            player.addEffect(new MobEffectInstance(ModEffects.NETHER_CORRUPTION.get(), EFFECT_DURATION, 0, false, true, true));
+            player.addEffect(new MobEffectInstance(ModEffects.NETHER_CORRUPTION, EFFECT_DURATION, 0, false, true, true));
         }
     }
 

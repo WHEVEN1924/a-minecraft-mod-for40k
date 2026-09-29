@@ -1,6 +1,7 @@
 package com.gellerfield;
 
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,8 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 
 /**
  * 下界腐败 (Nether Corruption) - a single custom debuff that embodies the behavior of
- * wither + weakness + mining fatigue (nausea-style screen distortion is pending the
- * 26.x client effect API, tracked separately).
+ * wither + weakness + mining fatigue.
  *
  * Instead of applying four vanilla effects, this one effect carries their behavior:
  *  - wither: periodic wither damage
@@ -30,9 +30,9 @@ public class NetherCorruptionEffect extends MobEffect {
                 Identifier.fromNamespaceAndPath(GellerFieldMod.MODID, "corruption_weakness"),
                 -4.0, AttributeModifier.Operation.ADD_VALUE);
         // Mining fatigue: -30% block break speed.
-        this.addAttributeModifier(Attributes.PLAYER_BLOCK_BREAK_SPEED,
+        this.addAttributeModifier(Attributes.BLOCK_BREAK_SPEED,
                 Identifier.fromNamespaceAndPath(GellerFieldMod.MODID, "corruption_fatigue"),
-                -0.3, AttributeModifier.Operation.MULTIPLY_TOTAL);
+                -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     }
 
     @Override
@@ -41,8 +41,9 @@ public class NetherCorruptionEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
         // Wither: periodic wither damage, scaling with amplifier.
         entity.hurt(entity.damageSources().wither(), WITHER_DAMAGE * (amplifier + 1));
+        return true;
     }
 }

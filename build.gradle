@@ -27,6 +27,16 @@ sourceSets.main.resources {
 }
 
 repositories {
+    // Local mirror first: hosts artifacts that fail to download over this network (e.g. jst-cli-bundle).
+    // Files are managed manually under C:\java\maven-local.
+    maven { url = 'file:///C:/java/maven-local' }
+
+    // PCL launcher's Minecraft libraries (Mojang/NeoForge runtime libs, jars only, no poms).
+    maven {
+        url = 'file:///C:/java/pcl-libs'
+        metadataSources { artifact() }
+    }
+
     maven {
         name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
