@@ -108,6 +108,22 @@ public class GellerFieldMenu extends AbstractContainerMenu {
             return stack.is(ModItems.BATTERY.get()) && getItem().isEmpty();
         }
 
+        /**
+         * 基类 Slot.remove 走 container.removeItem，而这里用的是一个空容器，
+         * 不重写会导致电池永远取不回来（safeTake / tryRemove 全部返回空）。
+         */
+        @Override
+        public ItemStack remove(int amount) {
+            ItemStack stored = getItem();
+            if (stored.isEmpty() || amount <= 0) {
+                return ItemStack.EMPTY;
+            }
+            ItemStack taken = stored.copyWithCount(Math.min(amount, stored.getCount()));
+            int remaining = stored.getCount() - taken.getCount();
+            this.set(remaining > 0 ? stored.copyWithCount(remaining) : ItemStack.EMPTY);
+            return taken;
+        }
+
         @Override
         public void setChanged() {
             // 数据组件即持久化存储，无需额外处理

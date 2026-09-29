@@ -1,7 +1,5 @@
 package com.gellerfield;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -11,12 +9,13 @@ import net.minecraft.world.entity.player.Inventory;
 
 /**
  * 盖勒力场电池管理界面（客户端渲染）。
- * 26.2 的 GUI 渲染走 extract* 系列 + GuiGraphicsExtractor；背景为 GUI sprite 图集。
+ * 26.2 的容器背景走 extractBackground（与 ShulkerBoxScreen 一致）：在这里画背景纹理，
+ * 槽位、物品、标签由父类 extractContents 负责，必须调用 super 才不会丢。
  */
 public class GellerFieldScreen extends AbstractContainerScreen<GellerFieldMenu> {
-    /** Sprite id，对应 assets/gellerfield/textures/gui/sprites/geller_field.png。 */
+    /** 界面背景纹理，256x256 画布，左上 176x166 为界面内容。 */
     private static final Identifier TEXTURE =
-            Identifier.fromNamespaceAndPath(GellerFieldMod.MODID, "geller_field");
+            Identifier.fromNamespaceAndPath(GellerFieldMod.MODID, "textures/gui/geller_field.png");
 
     public GellerFieldScreen(GellerFieldMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title, 176, 166);
@@ -27,8 +26,11 @@ public class GellerFieldScreen extends AbstractContainerScreen<GellerFieldMenu> 
     }
 
     @Override
-    public void extractContents(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
-        RenderPipeline pipeline = RenderPipelines.GUI_TEXTURED;
-        guiGraphics.blitSprite(pipeline, TEXTURE, this.leftPos, this.topPos, this.imageWidth, this.imageHeight);
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
+        super.extractBackground(graphics, mouseX, mouseY, a);
+        int xo = (this.width - this.imageWidth) / 2;
+        int yo = (this.height - this.imageHeight) / 2;
+        graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xo, yo, 0.0F, 0.0F,
+                this.imageWidth, this.imageHeight, 256, 256);
     }
 }
