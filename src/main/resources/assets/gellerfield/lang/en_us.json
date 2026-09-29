@@ -1,5 +1,8 @@
 {
   "item.gellerfield.geller_field": "Geller Field",
+  "effect.gellerfield.geller_field": "Geller Field",
   "effect.gellerfield.nether_corruption": "Nether Corruption",
+  "advancement.gellerfield.veil_of_reality.title": "Veil of Reality",
+  "advancement.gellerfield.veil_of_reality.description": "Your field is faithful...",
   "tooltip.gellerfield.geller_field": "Projects a bubble of reality around the wearer, granting immunity to Nether Corruption."
 }

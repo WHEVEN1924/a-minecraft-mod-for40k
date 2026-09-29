@@ -1,5 +1,8 @@
 {
   "item.gellerfield.geller_field": "盖勒力场",
+  "effect.gellerfield.geller_field": "盖勒力场",
   "effect.gellerfield.nether_corruption": "下界腐败",
-  "tooltip.gellerfield.geller_field": "在佩戴者周围投下一层现实气泡，免疫下界腐败。"
+  "advancement.gellerfield.veil_of_reality.title": "现实的帷幕",
+  "advancement.gellerfield.veil_of_reality.description": "您的力场是忠诚的……",
+  "tooltip.gellerfield.geller_field": "为佩戴者免疫下界腐败。"
 }
